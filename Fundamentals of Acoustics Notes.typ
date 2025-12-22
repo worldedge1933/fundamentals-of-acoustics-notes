@@ -37,6 +37,7 @@
 
 #show heading.where(level: 1): set text(fill: red)
 #show heading.where(level: 2): set text(fill: blue, font: "Microsoft YaHei")
+#show heading.where(level: 3): set text(weight: "regular")
 
 #show heading.where(level: 1): it => [
     #colbreak(weak: true)
@@ -481,7 +482,7 @@ $
 
 在阻抗不连续处，有些东西必须连续：
 
-1) 位移，因为弦没有断开
+1) 位移，因为弦没有断开\
 2) 回复力，因为弦在此处不能有无限大的加速度
 
 设
@@ -539,6 +540,11 @@ quad
 T = (2 Z_2) / (Z_1 + Z_2)
 $
 
+然而，功率并不与振幅成简单正比。
+
+$
+T_"power" = (Z_1 / Z_2) abs(T)^2 = (4 Z_1 Z_2) / (Z_1 + Z_2)^2 = 1 - R^2
+$
 
 
 == 8. 本章速记
@@ -558,5 +564,225 @@ $quad$
 $psi_r = R psi_i$，$psi_t = T psi_i$，\
 $quad$
 $R = (Z_1 - Z_2) / (Z_1 + Z_2)$，$T = (2 Z_2) / (Z_1 + Z_2)$
+
+\
+= Chapter 3: Propagation of sounds in fluids
+
+== 1. 基本假设
+
+$
+cases(
+p_"tot"(arrow(r),t) = p_0(arrow(r)) + p'(arrow(r),t),
+rho_"tot"(arrow(r),t) = rho_0(arrow(r)) + rho'(arrow(r),t)
+)
+$
+
+前一项为平均值或静水中的值，后一项为传播引起的扰动波。
+
+== 2. 推导 fluid 中的波动方程
+
+为进行推导，有三大等式和两个假设。
+
+=== 1) 方程 1：Force balance
+
+#figure(image("media/fa-fig-08.png", width: 70%))
+
+$
+dif F = a dif m 
+$
+
+$
+dif F = &(p(x) - p(x + dif x)) S\
+
+=& -S ((partial p) / (partial x)) dif x
+$
+
+$
+dif m = rho_"tot" S dif x
+$
+
+$
+a =& (D v_x) / (D t) \
+=& (partial v_x) / (partial t)+  (partial v_x) / (partial x) (dif x) / (dif t)\
+=& (partial v_x) / (partial t) + v_x (partial v_x) / (partial x)
+$
+
+注意，$a$ 是某个质点的加速度，因此使用了物质导数 $D / (D t)$。
+
+为何在绳子中没有使用物质导数？因为绳子上的质点只能在垂直方向运动，而流体中的质点可以在 $x$ 方向上运动，因此需要考虑流体质点的对流效应。
+
+联立得
+
+#math.equation(
+    $
+    -(partial p) / (partial x) = rho_"tot" ( (partial v_x) / (partial t) + v_x (partial v_x) / (partial x) )
+    $,
+    block: true,
+    numbering: _ => [(3.2)]
+)
+
+=== 2) 方程 2：mass balance
+
+#figure(image("media/fa-fig-09.png", width: 70%))
+
+对图上微元，近似认为其密度等于左边界处的密度。
+
+从密度变化推导其质量变化率：
+
+$
+(dif (dif m)) / (dif t) =& dif / (dif t) (rho_"tot"(x,t) S dif x)\
+
+=& (partial rho_"tot") / (partial t) S dif x
+$
+
+从流量推导质量变化率：
+
+$
+(dif (dif m)) / (dif t) =& S (rho_"tot" v_x)|_x - S (rho_"tot" v_x)|_(x+dif x)\
+
+=& -S (partial (rho_"tot" v_x)) / (partial x) dif x
+$
+
+因此
+$
+-(partial (rho_"tot" v_x)) / (partial x) = (partial rho_"tot") / (partial t)
+$
+
+展开得
+
+#math.equation(
+    $
+    -rho_"tot" (partial v_x) / (partial x) - v_x (partial rho_"tot") / (partial x) = (partial rho_"tot") / (partial t)
+    $,
+    block: true,
+    numbering:  _ => [(3.2)]
+)
+
+=== 3) 方程 3：$p$ 和 $rho$ 的关系
+
+绝热情况下：$p_"tot" = p_"tot"(rho_"tot")$。
+
+在 $(rho_0, p_0)$ 处展开：
+
+#math.equation(
+    $
+    dif p = c^2 dif rho
+    $,
+    block: true,
+    numbering: _ => [(3.3)]
+)
+
+=== 4) 假设 1：扰动很小
+
+#math.equation($
+    cases(
+    abs(p'(x,t)) << p_0(x),
+    abs(rho'(x,t)) << rho_0(x)
+    )$,
+    block: true,
+    numbering: _ => [(3.4)]
+)
+
+
+
+
+=== 5) 假设 2：速度扰动很小
+
+#math.equation(
+    $
+    v_x approx 0
+    $,
+    block: true,
+    numbering: _ => [(3.5)]
+)
+
+
+=== 6) 联立
+
+将 (3.4) 和 (3.5) 应用到 (3.1) 和 (3.2)，消去高阶小量，得
+#math.equation(
+    $
+    cases(
+        -(partial p) / (partial x) = rho_0 (partial v_x) / (partial t),
+        -rho_0 (partial v_x) / (partial x) = 1 / (c^2) (partial p) / (partial t)
+    )
+    $,
+    block: true,
+    numbering: _ => [(3.6)]
+)
+
+
+对第一式两边对 $x$ 求导：
+$
+(partial^2 p) / (partial x^2) = -rho_0 (partial^2 v_x) / (partial t partial x)
+$
+
+对第二式两边对 $t$ 求导：
+$
+-rho_0 (partial^2 v_x) / (partial t partial x) = 1 / (c^2) (partial^2 p) / (partial t^2)
+$
+
+因此
+$
+(partial^2 p) / (partial x^2) = 1 / (c^2) (partial^2 p) / (partial t^2)
+$
+
+== 3. 3D waves in fluid
+
+$
+nabla^2 p = (partial^2 p) / (partial x^2) + (partial^2 p) / (partial y^2) + (partial^2 p) / (partial z^2)
+$
+
+$
+nabla^2 p = 1 / (c^2) (partial^2 p) / (partial t^2)
+$
+
+== 4. Plane waves
+
+$
+tilde(p)(x,t) = tilde(A) e^(j(omega t - k x)) + tilde(B) e^(j(omega t + k x))
+$
+
+== 5. 流体特性阻抗
+
+$
+Z_0 = rho_0 c
+$
+
+== 6. 声速
+
+$
+c = sqrt(((partial p) / (partial rho))_"ad")
+$
+
+或者引入
+$
+beta_"ad" := lr(1 / rho_0 ((partial rho) / (partial p))_"ad" |)_(p=p_0)
+$
+
+
+$
+K_"ad" = 1 / beta_"ad"
+$
+
+$
+c = sqrt(K_"ad" / rho_0)
+$
+
+== 7. 球面波
+
+$
+p(r,t) = 1 / r f(r - c t)
+$
+
+== 8. 本章速记
+
+1) 流体波动方程关系式 ：$(partial^2 p) / (partial x^2) = 1 / (c^2) (partial^2 p) / (partial t^2)$
+
+2) 流体阻抗：$Z_0 = rho_0 c$
+
+3) 波传播速度：$c = sqrt(K_"ad" / rho_0)=sqrt(((partial p) / (partial rho))_"ad")$
+
+4) 球面波：$p(r,t) = 1 / r f(r - c t)$
 
 
