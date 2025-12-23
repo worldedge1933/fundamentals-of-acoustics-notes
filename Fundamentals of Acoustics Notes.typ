@@ -786,3 +786,202 @@ $
 4) 球面波：$p(r,t) = 1 / r f(r - c t)$
 
 
+
+\
+= Chapter 4: Energy, intensity, pressure level, and attenuation of sounds
+
+== 1. Power in damped forced oscillator
+
+$
+cases(
+f(t) = hat(f) cos(Omega t),
+v(t) = hat(v) cos(Omega t + Phi)
+)
+$
+
+$
+P =& f dot v \
+= &hat(f) hat(v) cos(Omega t) cos(Omega t + Phi)\
+
+=& (hat(f) hat(v)) / 4 (e^(j Omega t) + e^(-j Omega t)) (e^(j(Omega t + Phi)) + e^(-j(Omega t + Phi)))\
+
+= &(hat(f) hat(v)) / 4 (e^(j(2 Omega t + Phi)) + e^(-j Phi) + e^(j Phi) + e^(-j(2 Omega t + Phi)))\
+
+=& 1 / 2 hat(f) hat(v) (cos(Phi) + cos(2 Omega t + Phi))
+$
+
+active power：$cos(Phi)$
+
+reactive power：$cos(2 Omega t + Phi)$
+
+Reactive power 平均值恒是 0，代表了系统中不同形式能量的交换，active power 才是系统耗能。
+
+$
+P_"act" = 1 / 2 hat(v)^2 Re(Z) = 1 / 2 Re(f v^*) = 1 / 2 Re(f^* v)
+$
+
+== 2. 弦
+
+我们已知，弦的振动可以分成多个模态叠加。
+
+$
+y = sum_n C_n sin(omega_n t + phi_n) sin(k_n x)
+$
+
+$
+v = sum_n C_n omega_n cos(omega_n t + phi_n) sin(k_n x)
+$
+
+每个模态都可以看作一个独立的能量振子，在该模态中，弦的动能和势能交替达到最大值，总能量保持不变。
+
+因此要求弦总能量，可以计算每个模态的最大动能或最大势能，然后相加。
+
+总能量可表征为
+
+$
+dif E_n^"max" = 1 / 2 mu v_"max,n"^2(x) dif x = 1 / 2 mu omega_n^2 C_n^2 sin^2(k_n x) dif x
+$
+
+$
+E_"tot" = sum_n E_n^"max" = 1 / 2 integral_0^L dif E_n^"max" = 1 / 4 sum_n omega_n^2 mu L C_n^2
+$
+
+#colbreak()
+
+== 3. 流体中声波的能量
+
+定义 sound intensity 或 energy flux density
+
+$
+arrow(I) = p arrow(v)
+$
+
+于是有 Time-averaged intensity（也即 active power）
+
+$
+overline(arrow(I)) = overline(p arrow(v)) = 1 / 2 Re(p arrow(v)^*)
+$
+
+同时定义 energy density
+
+$
+overline(w) = rho_0 / 2 overline(v^2) + (overline(p^2)) / (2 rho_0 c^2)  = overline(w)_"kin" + overline(w)_"pot"
+$
+
+== 4. progressive 平面波的Intensity
+
+
+$
+p(x,t) =& p^+(x,t) + p^-(x,t) \
+=& A e^(j(omega t - k x + phi_A)) + B e^(j(omega t + k x + phi_B))
+$
+
+$
+v_x(x,t) =& (p^+(x,t)) / (rho_0 c) - (p^-(x,t)) / (rho_0 c)\
+
+=& (p^+(x,t)) / Z_0 - (p^-(x,t)) / Z_0\
+
+=& (p^+(x,t)) / Z^+ + (p^-(x,t)) / Z^-
+$
+
+$
+cases(
+Z^+ := +Z_0 = rho_0 c,
+Z^- := -Z_0 = -rho_0 c
+)
+$
+
+Instantaneous intensity：
+
+$
+I(x,t) = p(x,t) v_x(x,t) = (p^+(x,t)^2) / (rho_0 c) - (p^-(x,t)^2) / (rho_0 c)
+$
+
+Time-averaged intensity：
+
+$
+overline(I) = ((tilde(p)^+)^2) / (2 rho_0 c) - ((tilde(p)^-)^2) / (2 rho_0 c)
+$
+
+$tilde(zws)$ 表示均方根
+
+== 4. Progressive 平面波的 Intensity
+
+Progressive wave 中，仅有一个方向的平面波：
+
+$
+p(x,t) = A cos(omega t - k x + phi_A)
+$
+
+这种情况下
+
+$
+w_"kin"(x,t) = w_"pot"(x,t) =& 1 / 2 w(x,t)\
+=& (A^2) / (2 rho_0 c^2) cos^2(omega t - k x + phi_A)
+$
+
+$
+w = p^2 / (rho_0 c^2) 
+$
+
+$
+overline(w) = (overline(p^2)) / (rho_0 c^2) = (A^2) / (2 rho_0 c^2)
+$
+
+$
+I(x,t) = (A^2) / (rho_0 c) cos^2(omega t - k x + phi_A) = c w(x,t)
+$
+
+$
+overline(I) = 1 / 2 (A^2) / (rho_0 c) = c overline(w)
+$
+
+== 5. standing 平面波的Intensity
+
+$
+p =& A cos(omega t - k x + phi_A) + A cos(omega t + k x + phi_B)\
+
+=& 2 A cos(omega t + phi_1) cos(k x + phi_2)
+$
+
+$
+overline(w) = ( A^2) / (rho_0 c^2)
+$
+
+$
+overline(I) != c overline(w)
+$
+
+$
+overline(I) = 0
+$
+
+== 6. 球面波的Intensity
+
+$
+p(r,t) = A / r cos(omega t - k r + phi_A)
+$
+
+$
+w(r, t) = (p^2 (r, t)) / (rho_0 c^2) = (A^2) / (rho_0 c^2 r^2) cos^2(omega t - k r + phi_A)
+$
+
+$
+I = c w
+$
+
+$
+overline(I) = 1 / 2 (A^2) / (rho_0 c r^2) prop 1 / r^2
+$
+
+== 7. sound pressure level
+
+$
+p_0 = 2 times 10^(-5) space upright(P a)
+$
+
+$
+L = 20 log_10((tilde(p)) / (p_0)) space upright(d B)
+$
+
+
