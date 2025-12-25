@@ -868,7 +868,7 @@ $
 overline(w) = rho_0 / 2 overline(v^2) + (overline(p^2)) / (2 rho_0 c^2)  = overline(w)_"kin" + overline(w)_"pot"
 $
 
-== 4. progressive 平面波的Intensity
+== 4. 平面波的Intensity
 
 
 $
@@ -911,6 +911,10 @@ Progressive wave 中，仅有一个方向的平面波：
 
 $
 p(x,t) = A cos(omega t - k x + phi_A)
+$
+
+$
+v_x(x,t) = p(x,t) / (rho_0 c)
 $
 
 这种情况下
