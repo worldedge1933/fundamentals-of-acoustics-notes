@@ -1,6 +1,6 @@
 
 #set page(
-	margin: (top: 18mm, bottom: 18mm, left: 16mm, right: 16mm),
+	margin: (top: 18mm, bottom: 18mm, left: 10mm, right: 10mm),
 	columns: 2,
 )
 
@@ -900,7 +900,7 @@ $
 Time-averaged intensity：
 
 $
-overline(I) = ((tilde(p)^+)^2) / (2 rho_0 c) - ((tilde(p)^-)^2) / (2 rho_0 c)
+overline(I) = ((tilde(p)^+)^2) / (rho_0 c) - ((tilde(p)^-)^2) / (rho_0 c)
 $
 
 $tilde(zws)$ 表示均方根
@@ -937,7 +937,7 @@ I(x,t) = (A^2) / (rho_0 c) cos^2(omega t - k x + phi_A) = c w(x,t)
 $
 
 $
-overline(I) = 1 / 2 (A^2) / (rho_0 c) = c overline(w)
+overline(I) = 1 / 2 (A^2) / (rho_0 c) = 1/2 (Delta p_"max"^2)/ Z_c = c overline(w)
 $
 
 == 5. standing 平面波的Intensity
@@ -988,4 +988,225 @@ $
 L = 20 log_10((tilde(p)) / (p_0)) space upright(d B)
 $
 
+已知：$I prop p^2$
+
+$
+L = 10 log_10((I) / (I_0)) space upright(d B)
+$
+
+== 8. Acoustic impedance
+
+#figure(image("media/fa-fig-9.1.png", width: 30%))
+
+Average power of a sinusoidal wave in gas:
+
+$
+P = 1/2 (Delta p_"max"^2) / Z_c S = 1/2 (Delta p_"max"^2) / (Z_c/S) 
+$
+
+于是有：
+
+$
+Z_A = Z_c/S
+$
+
+== 9. Reflection and transmission coefficients in liquids
+
+#figure(image("media/fa-fig-07.png", width: 40%))
+
+我们已知，对于绳上的波，传播时遇到阻抗不连续处，有:
+
+$
+cases(
+R = (Z_1 - Z_2) / (Z_1 + Z_2),
+T = (2 Z_2) / (Z_1 + Z_2)
+)
+$
+
+然而，对于流体中的波，则截然不同
+
+#figure(image("media/fa-fig-9.2.png", width: 30%))
+
+需要将 $Z_1$ 和 $Z_2$ 替换为 $S_1/Z_1$ 和 $S_2/Z_2$
+
+因此得到：
+
+$
+cases(
+R =  display((S_1 / Z_1 - S_2 / Z_2 ) / ( S_1 / Z_1 + S_2 / Z_2 )),
+T = display((2 S_1 / Z_1) / ( S_1 / Z_1 + S_2 / Z_2 )),
+)
+$
+
+会发现，即使面积一样，表现仍不一样
+
+#figure(image("media/fa-fig-9.3.png", width: 80%))
+
+= Chapter 5: Sound sources and sound radiation
+
+== 1. Spherical waves
+
+对于一般的球面波，我们有
+
+$
+p(r,t) = 1 / r f(r - c t)
+$
+
+对于简谐形式的波
+
+$
+p(r,t) = A / r cos(omega t - k r)
+$
+
+$
+I(r,t) = (p(r,t)^2) / (rho_0 c) = w(r,t) c
+$
+
+对于球面波，我们知道 $v_r = (p(r,t)) / (rho_0 c)$。但是对于球面波来说
+
+$
+v_r = (p(r,t)) / (rho_0 c) (1 + 1 / (j k r))
+$
+
+$
+cases(
+k r << 1 => v_r tilde.equiv (p(r,t)) / (rho_0 c) 1 / (j k r) quad "近场",
+k r >> 1 => v_r tilde.equiv (p(r,t)) / (rho_0 c) quad "远场，和均匀平面波一样"
+)
+$
+
+== 2. 从简谐球面波到声源参数的推导
+
+假设，我们从一个简谐球面波声源开始，它位于原点，向各个方向均匀发散。
+
+先定义 $Q$：volume velocity $[m^3 / s]$。
+
+$
+dif V = 4 pi r^2 dif r = Q dif t
+$
+
+$
+Q =& 4 pi r^2 (dif r) / (dif t)\
+=& 4 pi r^2 v_r
+$
+
+$
+lim_(r -> 0) Q = 4 pi r^2 (p(r,t)) / (rho_0 c) 1 / (j k r) = (4 pi A)/(rho_0 j omega) e^(j omega t) = hat(Q) e^(j omega t)
+$
+
+因此
+
+$
+lim_(r->0) Q = hat(Q) e^(j omega t) => A = rho_0 j omega hat(Q) / (4 pi)
+$
+
+于是
+
+$
+p(r,t) = (rho_0 j omega hat(Q)) / (4 pi r) e^(j(omega t - k r))
+$
+
+$
+overline(I) = 1 / 2 (A^2) / (rho_0 c r^2) =  (omega^2 rho_0 hat(Q)^2) / (32 pi^2 c r^2)
+$
+
+== 3. Directional factor
+
+#figure(image("media/fa-fig-10.png", width: 70%))
+
+当考虑点声源阵列（如线阵列），发现在场的叠加成
+
+$
+p(r,theta,phi,t) = (A) / (r) R(theta,phi) e^(j(omega t - k r))
+$
+
+$theta, phi$ 和 $r, t$ 可以完全分开
+
+$R(theta,phi)$ 是 directional factor
+
+== 3. Dipole
+
+#figure(image("media/fa-fig-11.png", width: 55%))
+
+$
+Q_1(t) = +hat(Q) e^(j omega t)
+$
+
+$
+Q_2(t) = -hat(Q) e^(j omega t)
+$
+
+$
+p(r,t) = (j omega rho_0 hat(Q)) / (4 pi) (e^(-j k r_1) / r_1 - e^(-j k r_2) / r_2) e^(j omega t)
+$
+
+$
+r_1 -> r + d / 2 cos(theta), quad r_2 -> r - d / 2 cos(theta)
+$
+
+$
+p(r,t) =& (j omega rho_0 hat(Q)) / (4 pi r) (e^(j k d / 2 cos(theta)) - e^(-j k d / 2 cos(theta))) e^(j omega t - j k r)\
+
+=& -(omega rho_0 hat(Q)) / (2 pi r) sin(k d / 2 cos(theta)) e^(j(omega t - k r))
+$
+
+当 $k d << 1$ 时
+
+$
+p(r,t) = -(omega^2 rho_0 hat(Q) d) / (4 pi r c)  cos(theta) e^(j(omega t - k r))
+$
+
+$
+R(theta) = cos(theta)
+$
+
+== 4. The linear array
+
+#figure(image("media/fa-fig-12.png", width: 30%))
+
+$
+p(r,alpha,t) =& (j omega rho_0 hat(Q)) / (4 pi r) sum_(n=0)^(N-1) e^(j[omega t - k (r - n  d cos alpha)])\
+
+=& (j omega rho_0 hat(Q)) / (4 pi r) sum_(n=0)^(N-1) e^(j k d n sin alpha) e^(j(omega t - k r))\
+
+=& (j omega rho_0 N hat(Q)) / (4 pi r) (e^(j N k d sin alpha) - 1) / (N (e^(j k d sin alpha) - 1)) e^(j(omega t - k r))
+$
+
+$
+abs(R(alpha)) = abs((sin(N k d/2 sin alpha)) / (N sin(k d/2 sin alpha)))
+$
+
+注意这里是取模
+
+== 5. 多普勒效应
+
+#figure(image("media/fa-fig-13.png", width: 50%))
+
+1) 移动声源 (source)
+
+$
+lambda' = (c - v_s) T
+$
+
+$
+c T' = lambda'
+$
+
+$
+c 1/f' = (c - v_s) 1/f 
+$
+
+$
+f' = f / (1 - v_s / c)
+$
+
+2) 移动接收器
+
+$
+T' = lambda / (c + v_r) = (1 / f c) / (c + v_r)
+$
+
+$
+f' = (1 + v_r / c) f
+$
 
