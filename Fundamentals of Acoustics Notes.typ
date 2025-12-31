@@ -458,12 +458,12 @@ $
 
 则
 $
-Z_in = f(t) / v(0,t) = (Z_0 (tilde(A) - tilde(B))) / (tilde(A) + tilde(B))
+Z_"in" = f(t) / v(0,t) = (Z_0 (tilde(A) - tilde(B))) / (tilde(A) + tilde(B))
 $
 
 代入 $tilde(B) = - tilde(A) e^(-j 2 k L)$：
 $
-Z_in =& Z_0 (1 + e^(-j 2 k L)) / (1 - e^(-j 2 k L))\
+Z_"in" =& Z_0 (1 + e^(-j 2 k L)) / (1 - e^(-j 2 k L))\
 
 =& Z_0 (e^(j k L) + e^(-j k L)) / (e^(j k L) - e^(-j k L))
 $
@@ -557,7 +557,7 @@ $
 
 4) 自由端阻抗 (特性)：$Z_0 = sqrt(T mu)$
 
-5) 固定端输入阻抗：$Z_in = - j Z_0 cot(k L)$
+5) 固定端输入阻抗：$Z_"in" = - j Z_0 cot(k L)$
 
 6) 阻抗不连续：\
 $quad$
@@ -1210,3 +1210,172 @@ $
 f' = (1 + v_r / c) f
 $
 
+
+\
+= Chapter 7: Pipes
+
+== 1. Infinite transmission lines
+
+#fig("media/fa-fig-14.png")
+
+流动方程(7.1)：
+
+$
+cases(
+p(x) = A e^(-j k x) + B e^(j k x),
+Z_0 v(x) = A e^(-j k x) - B e^(j k x)
+)
+$
+
+
+边界条件
+
+$
+cases(
+p(0) = A + B,
+Z_0 v(0) = A - B
+)
+$
+
+以上谈论的是通式，如果要谈论无限长管线的输入阻抗，则需要认为没有反射波，那么
+
+$
+B = 0
+$
+
+$
+Z_"in" = Z_0 = rho c
+$
+
+== 2. Finite transmission lines
+
+#fig("media/fa-fig-15.png")
+
+展开 (7.1) 式，有
+
+$
+p(x) =& A e^(-j k x) + B e^(j k x) \
+=& (A + B) cos(k x) - j (A - B) sin(k x)
+$
+
+$
+Z_0 v(x) =& A e^(-j k x) - B e^(j k x) \
+=& (A - B) cos(k x) - j (A + B) sin(k x)
+$
+
+相较于无限，边界条件多了
+
+$
+(p(l)) / (v(l)) = Z_L
+$
+
+$
+Z_0 (A e^(-j k l) + B e^(j k l)) / (A e^(-j k l) - B e^(j k l)) = Z_L
+$
+
+$
+A e^(-j k l) + B e^(j k l) = Z_L / Z_0 (A e^(-j k l) - B e^(j k l))
+$
+
+$
+A (1 - Z_L / Z_0) = -B (1 + Z_L / Z_0) e^( 2 j k l)
+$
+
+$
+A (Z_0 - Z_L) / Z_0 = -B (Z_0 + Z_L) / Z_0 e^( 2 j k l)
+$
+
+$
+A = B (Z_L + Z_0) / (Z_L - Z_0) e^(j 2 k l)
+$
+
+于是
+
+$
+Z_"in" &= (p(0)) / (v(0)) = Z_0 (A + B) / (A - B) \
+&= Z_0 ((Z_L + Z_0) / (Z_L - Z_0) e^(j 2 k l) + 1) / ((Z_L + Z_0) / (Z_L - Z_0) e^(j 2 k l) - 1) \
+&= Z_0 ((Z_L + Z_0) e^(j 2 k l) + (Z_L - Z_0)) / ((Z_L + Z_0) e^(j 2 k l) - (Z_L - Z_0)) \
+&= Z_0 ((Z_L + Z_0) e^(j k l) + (Z_L - Z_0) e^(-j k l)) / ((Z_L + Z_0) e^(j k l) - (Z_L - Z_0) e^(-j k l)) \
+&= Z_0 (Z_L cos(k l) + j Z_0 sin(k l)) / (Z_0 cos(k l) + j Z_L sin(k l)) \
+&= Z_0 (Z_L + j Z_0 tan(k l)) / (Z_0 + j Z_L tan(k l))
+$
+
+若 $k l = pi / 2 + m pi$，
+
+$
+Z_"in" = (Z_0^2) / (Z_L) prop 1 / Z_L 
+$
+
+quarter-wavelength behavior
+
+若 $Z_L -> oo$，
+
+$
+Z_"in" = -j Z_0 cot(k l) 
+$
+
+rigid end plate
+
+和固定端弦一样
+
+== 3. Pipes with discontinuities
+
+#fig("media/fa-fig-16.png")
+
+在 discontinuity 处，管中声波传播满足两边压力相等，边界处流速连续。
+
+$
+cases(
+p_1 = p_2,
+v_1 S_1 = v_2 S_2
+)
+$
+
+于是
+
+$
+(p_1) / (v_1) = (p_2) / (v_2) (S_1 / S_2) = Z_2 (S_1 / S_2) = Z_1
+$
+
+即
+$
+Z_1/Z_2 = S_1 / S_2
+$
+
+这里的 1,2 指的是间断点的左趋近和右趋近。
+
+== 4. Resonances
+
+#fig("media/fa-fig-17.png")
+
+$
+Z_"in,1"^+ = -j Z_0 cot(k l')
+$
+
+当 $k l' << 1$ 时，$Z_"in,1"^+ = -j Z_0 cot(k l') tilde.equiv (Z_0) / (j k l') = (rho c^2) / (j omega l')$
+
+$
+Z_"in,1"^- = Z_"in,1"^ + (S_2 / S_1)
+$
+
+$
+Z_"in,2"^+ = (rho c^2) / (j omega l') (S_2 / S_1)
+$
+
+$
+Z_"in,2"^+ = Z_0 (Z_"in,1"^- + j Z_0 tan(k l)) / (Z_0 + j Z_"in,1"^- tan(k l))
+$
+
+当 $k l << 1$，$Z_"in,2"^+ tilde.equiv (Z_"in,1"^- + j Z_0 k l) / (Z_0 + j Z_"in,1"^- k l)$
+
+$
+Z_"in,2"^- = Z_"in,2"^+ (S_1 / S_2) = j rho c S_1/S_2 ((omega l )/c S_1 - c / (omega l^') S_2)/(S_1 + l/l^' S_2)
+$
+
+这种共振器又称海姆霍兹共振器
+
+$
+omega_"res" = sqrt((c^2 S_1) / (l' V S_2))
+$
+
+实际上，最外层的 $S_1$对共振频率毫无影响。
