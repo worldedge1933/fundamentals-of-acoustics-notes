@@ -1178,6 +1178,13 @@ $
 
 注意这里是取模
 
+为了更方便记忆，注意到，我们在 Chapter 5.3 中使用了 $1/2 d sin theta$，我们记其为 $Delta r$，于是有
+
+
+$
+abs(R(alpha)) = abs((sin(N k Delta r)) / (N sin(k Delta r)))
+$
+
 == 5. 多普勒效应
 
 #figure(image("media/fa-fig-13.png", width: 50%))
