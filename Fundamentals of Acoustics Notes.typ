@@ -1,4 +1,56 @@
+// -----------------
+// Cover
+// -----------------
+#set page(
+  margin: (top: 22mm, bottom: 22mm, left: 18mm, right: 18mm),
+  columns: 1,
+  background: none,
+  numbering: none,
+)
 
+#place(center, dy: 80mm)[
+  #set text(size: 22pt, weight: "bold")
+  #align(center)[Fundamentals of Acoustics Notes]
+]
+
+#place(bottom + center, dy: -10mm)[
+  #set text(size: 12pt, weight: "regular")
+  #align(center)[基于米兰理工大学（Politecnico di Milano）\ 2025 Fall《Fundamentals of Acoustics》课程]
+
+  #v(0.8em)
+  #set text(size: 11pt)
+  #align(center)[作者：#link("https://github.com/worldedge1933/fundamentals-of-acoustics-notes")[\@worldedge1933]]
+
+  #v(0.6em)
+  #align(center)[2025-12]
+]
+
+
+#pagebreak()
+
+// -----------------
+// Table of contents
+// -----------------
+#set page(
+  margin: (top: 22mm, bottom: 22mm, left: 18mm, right: 18mm),
+  columns: 1,
+  background: none,
+  numbering: none,
+)
+
+#set text(size: 18pt, weight: "bold")
+#align(center)[目录]
+
+#v(1.2em)
+#set text(size: 11pt, weight: "regular")
+#show outline.entry.where(level: 1): set block(above: 2em, below: 1.2em)
+#outline(depth: 2)
+
+#pagebreak()
+
+// -----------------
+// Main document
+// -----------------
 #set page(
   margin: (top: 18mm, bottom: 18mm, left: 10mm, right: 10mm),
   columns: 2,
@@ -21,7 +73,7 @@
     line(length: h, angle: 90deg, stroke: 0.5pt),
   )
 })
-
+#counter(page).update(1)
 #set page(
   numbering: "1",
   number-align: center + bottom,
