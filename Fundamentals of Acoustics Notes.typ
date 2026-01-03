@@ -22,7 +22,7 @@
   #align(center)[作者：#link("https://github.com/worldedge1933/fundamentals-of-acoustics-notes")[\@worldedge1933]]
 
   #v(0.6em)
-  #align(center)[2025-12]
+  #align(center)[2026-01-03]
 ]
 
 
@@ -273,11 +273,11 @@ $
 $
 
 $
-  Delta omega = omega_1 - omega_2 = beta / m
+  Delta omega = omega_1 - omega_2 = beta / m = -2A
 $
 
 $
-  Q = omega_0 / (Delta omega) = (m omega_0) / beta
+  Q = omega_0 / (Delta omega) =omega_0 / (-2 A) =  (m omega_0) / beta
 $
 
 == 6. 本章速记
