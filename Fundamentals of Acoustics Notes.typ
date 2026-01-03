@@ -44,9 +44,6 @@
   #it
 ]
 
-#let fig(path) = figure(
-  image(path, width: 100%),
-)
 
 = Chapter 1: Introduction to vibrations
 
@@ -273,7 +270,9 @@ $
 
 == 2. 弦的一维波动方程（推导要点）
 
-#fig("media/fa-fig-01.png")
+#figure(
+  image("media/fa-fig-01.png", width: 100%),
+)
 
 对此情境，我们先做出三个假设：
 
@@ -318,7 +317,9 @@ $
 \
 
 === 1) 固定端：$y(0,t)=0$
-#fig("media/fa-fig-02.png")
+#figure(
+  image("media/fa-fig-02.png", width: 100%),
+)
 $
   f_1(v t) + f_2(-v t) = 0
   quad => quad
@@ -326,7 +327,9 @@ $
 $
 
 === 2) 自由端：$((partial y) / (partial x))|_(x=0) = 0$
-#fig("media/fa-fig-03.png")
+#figure(
+  image("media/fa-fig-03.png", width: 100%),
+)
 $
   f_1'(v t) + f_2'(-v t) = 0
   quad => quad
@@ -359,7 +362,9 @@ $
 
 == 5. 弦上驻波（两端固定）
 
-#fig("media/fa-fig-04.png")
+#figure(
+  image("media/fa-fig-04.png", width: 100%),
+)
 
 假设波动方程：
 $
@@ -1210,7 +1215,9 @@ $
 
 == 1. Infinite transmission lines
 
-#fig("media/fa-fig-14.png")
+#figure(
+  image("media/fa-fig-14.png", width: 100%),
+)
 
 流动方程(7.1)：
 
@@ -1243,7 +1250,9 @@ $
 
 == 2. Finite transmission lines
 
-#fig("media/fa-fig-15.png")
+#figure(
+  image("media/fa-fig-15.png", width: 100%),
+)
 
 展开 (7.1) 式，有
 
@@ -1314,7 +1323,9 @@ rigid end plate
 
 == 3. Pipes with discontinuities
 
-#fig("media/fa-fig-16.png")
+#figure(
+  image("media/fa-fig-16.png", width: 100%),
+)
 
 在 discontinuity 处，管中声波传播满足两边压力相等，边界处流速连续。
 
@@ -1340,7 +1351,9 @@ $
 
 == 4. Resonances
 
-#fig("media/fa-fig-17.png")
+#figure(
+  image("media/fa-fig-17.png", width: 100%),
+)
 
 $
   Z_"in,1"^+ = -j Z_0 cot(k l')
