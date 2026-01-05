@@ -819,7 +819,7 @@ $
 $
 
 $
-  c = sqrt(K_"ad" / rho_0)
+  c = sqrt(K_"ad" / rho_0) = sqrt((gamma p_0) / rho_0)
 $
 
 == 7. 球面波
