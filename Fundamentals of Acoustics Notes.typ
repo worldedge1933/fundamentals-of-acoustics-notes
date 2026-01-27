@@ -277,7 +277,7 @@ $
 $
 
 $
-  Q = omega_0 / (Delta omega) =omega_0 / (-2 A) =  (m omega_0) / beta
+  Q = omega_0 / (Delta omega) =omega_0 / (-2 A) = (m omega_0) / beta
 $
 
 == 6. 本章速记
@@ -1414,11 +1414,8 @@ $
 当 $k l' << 1$ 时，$Z_"in,1"^+ = -j Z_0 cot(k l') tilde.equiv (Z_0) / (j k l') = (rho c^2) / (j omega l')$
 
 $
-  Z_"in,1"^- = Z_"in,1"^+ (S_2 / S_1)
-$
-
-$
-  Z_"in,2"^+ = (rho c^2) / (j omega l') (S_2 / S_1)
+  Z_"in,1"^- & = Z_"in,1"^+ (S_2 / S_1) \
+             & = (rho c^2) / (j omega l') (S_2 / S_1)
 $
 
 $
